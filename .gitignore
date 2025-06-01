@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Environnement virtuel
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Configuration de l'éditeur
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Base de données SQLite
+*.sqlite3
+*.db
+
+# Fichiers de log
+*.log
+
+# Fichiers de cache Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+local_settings.py
+media/
+staticfiles/
+static/
+*.mo
+
+# Fichier d'environnement (mot de passe SMTP, clés secrètes)
+.env
+.env.*
+
+# Migrations inutiles (optionnel)
+**/migrations/*.pyc
+**/migrations/__pycache__/
+**/migrations/*.log
+
+# Fichiers de test
+coverage/
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Node (si tu utilises npm/yarn pour du frontend)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+dist/
+build/
+*.tgz
+
+# OS spécifiques
+.DS_Store
+Thumbs.db
+desktop.ini

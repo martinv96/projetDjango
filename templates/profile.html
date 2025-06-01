@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Profil - RunTrack{% endblock %}
+
+{% block content %}
+<header class="mb-10 text-center max-w-lg">
+    <h1 class="text-4xl font-extrabold mb-4">Bienvenue sur votre profil, {{ user.username }} !</h1>
+    <p class="text-lg">Suivez vos sessions de course et améliorez vos performances.</p>
+</header>
+
+<main class="space-y-8 max-w-md w-full bg-white bg-opacity-20 rounded-lg p-6 shadow-lg text-gray-900">
+
+    <!-- Boutons navigation -->
+    <div class="flex justify-between mb-6">
+        <a href="{% url 'home' %}"
+           class="bg-white text-blue-600 font-semibold px-6 py-2 rounded-lg shadow hover:bg-blue-100 transition">
+            Accueil
+        </a>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit"
+                    class="bg-white text-blue-600 font-semibold px-6 py-2 rounded-lg shadow hover:bg-blue-100 transition">
+                Se déconnecter
+            </button>
+        </form>
+    </div>
+
+    {% if user.profile.photo %}
+        <img src="{{ user.profile.photo.url }}" alt="Photo de profil"
+             class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg border-4 border-white">
+    {% endif %}
+
+    <!-- Infos utilisateur -->
+    <section class="text-left">
+        <h2 class="text-2xl font-semibold mb-3">Informations personnelles</h2>
+        <p><strong>Nom d'utilisateur :</strong> {{ user.username }}</p>
+        <p><strong>Email :</strong> {{ user.email }}</p>
+        <p><strong>Date d'inscription :</strong> {{ user.date_joined|date:"d/m/Y" }}</p>
+    </section>
+
+    <!-- Stats réelles -->
+    <section class="mt-6">
+        <h2 class="text-2xl font-semibold mb-3">Vos statistiques de course</h2>
+        {% if total_sessions > 0 %}
+            <ul class="list-disc list-inside space-y-1">
+                <li>Total sessions : {{ total_sessions }}</li>
+                <li>Distance parcourue : {{ total_distance }} km</li>
+                <li>Durée totale : {{ total_duration|floatformat:0 }} min</li>
+                <li>Vitesse moyenne : {{ vitesse_moyenne }} km/h</li>
+            </ul>
+        {% else %}
+            <p>Aucune session enregistrée pour le moment.</p>
+        {% endif %}
+    </section>
+
+    <!-- Modifier profil -->
+    <section class="mt-8 text-center">
+        <a href="{% url 'profile_edit' %}"
+           class="inline-block bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-blue-100 transition">
+            Modifier mon profil
+        </a>
+    </section>
+
+</main>
+{% endblock %}
