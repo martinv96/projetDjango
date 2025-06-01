@@ -176,3 +176,6 @@ DEFAULT_FROM_EMAIL = 'RunTrack <noreply@runtrack.fr>'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

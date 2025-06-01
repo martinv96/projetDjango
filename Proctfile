@@ -1,1 +1,3 @@
 web: gunicorn projetDjango.wsgi
+
+web: python manage.py tailwind build && python manage.py collectstatic --noinput && gunicorn projetDjango.wsgi:application
