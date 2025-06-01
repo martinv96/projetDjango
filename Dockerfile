@@ -25,6 +25,9 @@ RUN pip install -r requirements.txt
 # Copier le reste de l'application
 COPY . /app/
 
+# Copier le fichier .env pour les variables d'environnement
+COPY .env /app/
+
 # Construire tailwind et collecter les fichiers statiques Django
 RUN python manage.py tailwind build && python manage.py collectstatic --noinput
 
