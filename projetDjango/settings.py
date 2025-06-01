@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-3xi=va3b4o5&^j!kozbz-4l%g05d)iqju_ezy)$+v3^04@zlgr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['projetdjango.onrender.com', 'localhost', '127.0.0.1']
+
 
 # Detect environment (default to 'local' if variable ENVIRONMENT is not set)
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'local')
