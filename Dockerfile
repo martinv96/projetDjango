@@ -45,5 +45,6 @@ RUN python manage.py tailwind install \
     && python manage.py collectstatic --noinput
 
 # Commande de démarrage
-CMD ["gunicorn", "projetDjango.wsgi:application", "--bind", "0.0.0.0:${PORT}"]
+CMD sh -c "gunicorn projetDjango.wsgi:application --bind 0.0.0.0:${PORT}"
+
 
