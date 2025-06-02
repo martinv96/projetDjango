@@ -22,11 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3xi=va3b4o5&^j!kozbz-4l%g05d)iqju_ezy)$+v3^04@zlgr'
+DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = config('SECRET_KEY', default='fallback-secret-key')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['projetdjango-production.up.railway.app', 'localhost', '127.0.0.1']
 
@@ -179,3 +177,10 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# For Railway static file handling
+if ENVIRONMENT == 'production':
+    STATIC_URL = '/static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
